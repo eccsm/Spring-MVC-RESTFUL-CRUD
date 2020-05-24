@@ -13,6 +13,8 @@ import javax.persistence.Table;
 @Table
 public class Item implements Serializable {
 
+
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,15 +29,23 @@ public class Item implements Serializable {
 
 	@Column
 	private int price;
+	
+	@Column
+    String imageUrl;
+
+	@Column
+	
+    Category category;
 
 	public Item() {
 	}
-
-	public Item(String name, String description, int price) {
-		super();
+	
+	public Item(String name, String description, int price, String imageUrl, Category category) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.imageUrl = imageUrl;
+		this.category = category;
 	}
 
 	public long getId() {
@@ -70,8 +80,22 @@ public class Item implements Serializable {
 		this.price = price;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getImageUrl() {
+		return imageUrl;
 	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	
 
 }

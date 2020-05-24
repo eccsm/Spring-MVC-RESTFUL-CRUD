@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.eccsm.model.Item;
 import com.eccsm.repository.ItemDao;
 
+@SuppressWarnings("unchecked")
 @Repository
 public class ItemDaoImpl implements ItemDao {
 
@@ -20,7 +21,6 @@ public class ItemDaoImpl implements ItemDao {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Item> listItems() {
 		return sessionFactory.getCurrentSession().createQuery("FROM " + Item.class.getName()).list();
@@ -43,7 +43,7 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Override
 	public Item getItem(long id) {
-		return sessionFactory.getCurrentSession().get(Item.class, id);
+		return (Item) sessionFactory.getCurrentSession().get(Item.class, id);
 	}
 
 }
